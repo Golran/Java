@@ -20,8 +20,8 @@ public class Segment {
         var vectorBC = pointC.sub(PointB);
         var scalarCAAB = vectorAC.scalar(VectorAB);
         var scalarCBBA = vectorBC.scalar(VectorBA);
-        if (scalarCAAB <= 0) return vectorAC.len();
-        if (scalarCAAB <= 0) return vectorBC.len();
+        if (scalarCAAB <= 0) return Math.min(vectorAC.len(),vectorBC.len()) ;
+        if (scalarCBBA <= 0) return Math.min(vectorAC.len(),vectorBC.len());
         if (scalarCAAB > 0 && scalarCBBA > 0) return height(VectorAB.len(), vectorAC.len(), vectorBC.len());
         return 0.0;
     }

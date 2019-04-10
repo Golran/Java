@@ -7,24 +7,24 @@ public class Vector {
 
     public Vector(int dimension, double[] components) {
         this.dimension = dimension;
-        this.components = components;
+        this.components = makeArrayComponents(components,dimension);
     }
 
     public Vector(Vector vector, int dimension) {
         this.dimension = dimension;
-        this.components = makeArrayComponents(vector, dimension);
+        this.components = makeArrayComponents(vector.components, dimension);
     }
 
-    private double[] makeArrayComponents(Vector vector, int dimension) {
+    private double[] makeArrayComponents(double[] components, int dimension) {
         var result = new double[dimension];
-        if (vector.dimension >= dimension) {
+        if (components.length >= dimension) {
             for (int i = 0; i < dimension; i++)
-                result[i] = vector.components[i];
+                result[i] = components[i];
             return result;
         }
 
-        for (int i = 0; i < vector.dimension; i++)
-            result[i] = vector.components[i];
+        for (int i = 0; i < components.length; i++)
+            result[i] = components[i];
         return result;
     }
 
